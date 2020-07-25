@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pf="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Almacenes Ecopetrol</title>
+    </h:head>
+    <h:body>
+        <h:form id="AlmacenesQueryForm"> 
+            <pf:dataTable id="AlmacenesQueryTable" value="#{almacenesMB.almacenes}" var="almacen">
+                <pf:column headerText="IDENTIFICADOR">
+                    <pf:outputLabel value="#{almacen.idalmacen}"/>
+                </pf:column>
+                <pf:column headerText="NOMBRE">
+                    <pf:link value="#{almacen.nombre}" outcome="Tanques">
+                        <f:param name="idalmacen" value="#{almacen.idalmacen}"/>
+                    </pf:link>
+                </pf:column>
+            </pf:dataTable>
+            <br/>
+            <pf:commandButton update="AlmacenesQueryTable" id="AlmacenesQueryButton" actionListener="#{almacenesMB.queryAlmacenes()}" value="Query Alamcen"/>
+        </h:form>
+    </h:body>
+</html>
+
